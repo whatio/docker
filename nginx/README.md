@@ -1,5 +1,15 @@
 # Docker nginx
 
+## Command
+
+```bash
+sudo docker compose -f compose.yaml up -d --build
+sudo docker compose -f compose.yaml down
+sudo docker exec -it docker-nginx /bin/bash
+# tail -f /usr/share/nginx/game.access.log
+sudo docker logs docker-nginx -f
+```
+
 ## Add `example.com`
 
 ### SSL
