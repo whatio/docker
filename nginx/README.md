@@ -10,39 +10,40 @@ sudo docker exec -it docker-nginx /bin/bash
 sudo docker logs docker-nginx -f
 ```
 
-## Add `example.com`
+## Add `www.example.com`
 
 ### SSL
 
-- Add [ssl/example.com](./ssl/example.com/)
+- Add [ssl/www.example.com](./ssl/www.example.com/)
 
 ### Static
 
-- Add [static/example.com](./static/example.com/)
+- Add [static/www.example.com](./static/www.example.com/)
 
 ### Nginx config.
 
-- Add [conf.d/example.com.conf](./conf.d/example.com.conf)
+- Add [conf.d/www.example.com.conf](./conf.d/www.example.com.conf)
+- Check all `www.example.com`
 
 ```conf
 # HTTP redirect
 server {
 	listen      80;
 	# listen      [::]:80;
-	server_name example.com www.example.com;    # replace example.com
+	server_name www.example.com;
 	return 301 https://$server_name$request_uri;
 }
 
 server {
 	listen                  443 ssl;
-	server_name example.com www.example.com;    # replace example.com
+	server_name www.example.com;
 	
-	root /usr/share/nginx/static/example.com;   # replace example.com
+	root /usr/share/nginx/static/www.example.com;
 	index index.html;
 
 	# SSL
-	ssl_certificate         /etc/nginx/ssl/example.com/example.com.pem; # replace example.com.pem
-	ssl_certificate_key     /etc/nginx/ssl/example.com/example.com.key; # replace example.com.key
+	ssl_certificate         /etc/nginx/ssl/www.example.com/www.example.com.pem;
+	ssl_certificate_key     /etc/nginx/ssl/www.example.com/www.example.com.key;
 
 
 	# gzip
@@ -53,9 +54,8 @@ server {
 	gzip_types              text/plain text/css text/xml application/json application/javascript application/rss+xml application/atom+xml image/svg+xml;
 
 	location / {
-		try_files $uri $uri/ /404.html; # replace 404.html
+		try_files $uri $uri/ /404.html;
 	}
 	
 }
-
 ```
