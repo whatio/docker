@@ -14,16 +14,15 @@ sudo docker logs docker-nginx -f
 
 ### SSL
 
-- Add [ssl/www.example.com](./ssl/www.example.com/)
+- Add [ssl/example.com](./ssl/example.com/)
 
 ### Static
 
-- Add [static/www.example.com](./static/www.example.com/)
+- Add [static/www.example.com](./static/example.com/)
 
 ### Nginx config.
 
-- Add [conf.d/www.example.com.conf](./conf.d/www.example.com.conf)
-- Check all `www.example.com`
+- Add [conf.d/example.com.conf](./conf.d/example.com.conf)
 
 ```conf
 # HTTP redirect
@@ -42,8 +41,8 @@ server {
 	index index.html;
 
 	# SSL
-	ssl_certificate         /etc/nginx/ssl/www.example.com/www.example.com.pem;
-	ssl_certificate_key     /etc/nginx/ssl/www.example.com/www.example.com.key;
+	ssl_certificate         /etc/nginx/ssl/example.com/example.com.pem;
+	ssl_certificate_key     /etc/nginx/ssl/example.com/example.com.key;
 
 
 	# gzip
